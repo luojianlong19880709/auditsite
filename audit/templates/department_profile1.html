@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+</head>
+<body>
+<div style="width:100%;margin-top:3px;height:500px; overflow-x: scroll; overflow-y: scroll" >
+<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:2000px;font-size:15px">
+         <tr>
+                <td style="vertical-align:middle; text-align:center" width="100">用户名称</td>
+                <td style="vertical-align:middle; text-align:center" width="100">申请人</td>
+                <td style="vertical-align:middle; text-align:center" width="200">所在部门</td>
+                <td style="vertical-align:middle; text-align:center" width="100">直接领导</td>
+                <td style="vertical-align:middle; text-align:center" width="100">手机号</td>
+                <td style="vertical-align:middle; text-align:center" width="100">分机号</td>
+                <td style="vertical-align:middle; text-align:center" width="150">预存储量(GB)</td>
+                <td style="vertical-align:middle; text-align:center" width="200">预每月存储增量(GB)</td>
+                <td style="vertical-align:middle; text-align:center" width="150">访问业务范围</td>
+                <td style="vertical-align:middle; text-align:center" width="100">应用说明</td>
+                <td style="vertical-align:middle; text-align:center" width="200">注册时间</td>
+                <td style="vertical-align:middle; text-align:center" width="500">注册服务器IP</td>
+          </tr>
+
+         {% for i in departmentinfo %}
+          <tr>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.user_name }}</td>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.applicant }}</td>
+                <td style="vertical-align:middle; text-align:center" width="200">{{ i.department }}</td>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.leader }}</td>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.mobile_phone }}</td>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.tel_number }}</td>
+                <td style="vertical-align:middle; text-align:center" width="150">{{ i.storage }}</td>
+                <td style="vertical-align:middle; text-align:center" width="200">{{ i.storage_per_month }}</td>
+                <td style="vertical-align:middle; text-align:center" width="150">{{ i.access_business_range }}</td>
+                <td style="vertical-align:middle; text-align:center" width="100">{{ i.description }}</td>
+                <td style="vertical-align:middle; text-align:center" width="200">{{ i.apply_date | date:"Y-m-d H:i" }}</td>
+                <td style="vertical-align:middle; text-align:center" width="500">{{ i.hadoop_client_ip }}</td>
+         </tr>
+          {% endfor %}
+
+
+   </table>
+</div>
+	<p>
+        {% if departmentinfo.has_previous %}
+          <a href="?page={{ departmentinfo.previous_page_number }}">Previous</a>
+          {% endif %}
+          {# departmentinfo.paginator.number_pages 返回总页数 #}
+          Page {{ departmentinfo.number }} of {{ departmentinfo.paginator.num_pages }}.
+        {% if departmentinfo.has_next %}
+          <a href="?page={{ departmentinfo.next_page_number }}">Next</a>
+        {% endif %}
+        </p>
+</body>
+</html>

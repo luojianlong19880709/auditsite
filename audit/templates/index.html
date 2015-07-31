@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>人人网数据平台-Hadoop数据审计系统-网站概况</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-store"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+
+<!-- js -->
+<link href="/site_media/js/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+<link href="/site_media/js/ligerUI/skins/blue/css/all.css" rel="stylesheet" type="text/css" /> 
+<link href="/site_media/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
+<link href="/site_media/css/cycas.css" rel="stylesheet" type="text/css" /> 
+<link href="/site_media/css/common.css" rel="stylesheet" type="text/css" /> 
+
+<script src="/site_media/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/core/base.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerui.min.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerGrid.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerToolBar.js" type="text/javascript"></script>
+<script src="/site_media/js/ligerUI/js/plugins/ligerComboBox.js" type="text/javascript"></script>
+
+
+<script src="/site_media/js/highcharts.js" type="text/javascript"></script>
+<script src="/site_media/js/highstock.src.js" type="text/javascript"></script>
+<script src="/site_media/js/exporting.js" type="text/javascript"></script>
+<script src="/site_media/js/json2.js" type="text/javascript"></script>
+<script src="/site_media/js/LG.js" type="text/javascript"></script>
+<script src="/site_media/js/onload.js" type="text/javascript"></script>
+
+<script src="/site_media/js/ligerUI/js/ligerui.min.js"
+        type="text/javascript"></script>
+<link href="/site_media/css/index.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+            var tab = null;
+            var tabidcounter = 0;
+            var accordion = null;
+            var tree = null;
+            var menuManager;
+            $(function ()
+            {
+                //布局
+                $("#layout1").ligerLayout({ leftWidth: 220,bottomHeight:35, height: '100%',heightDiff:0, onHeightChanged: f_heightChanged });
+                var height = $(".l-layout-center").height();
+                //Tab
+                $("#framecenter").ligerTab({ height: height });
+                //面板
+                $("#accordion1").ligerAccordion({ height: height - 24, speed: null });
+                $(".l-link").hover(function ()
+                {
+                    $(this).addClass("l-link-over");
+                }, function ()
+                {
+                    $(this).removeClass("l-link-over");
+                });
+                //树
+                tab = $("#framecenter").ligerGetTabManager();
+
+                
+           	    $("#pageloading").html(height);
+           	    $("#pageloading").show();
+           	 
+                accordion = $("#accordion1").ligerGetAccordionManager();
+                tree = $("#tree1").ligerGetTreeManager();
+                $("#pageloading").hide();
+
+                LG.prevDialogImage();
+
+
+                //菜单初始化
+                $("ul.menulist li").live('click', function ()
+                {
+                    var jitem = $(this);
+                    var tabid = jitem.attr("tabid");
+                    var url = jitem.attr("url");
+                    if (!url) return;
+                    if (!tabid)
+                    {
+                        tabidcounter++;
+                        tabid = "tabid" + tabidcounter;
+                        jitem.attr("tabid", tabid);
+
+                        //给url附加menuno
+                        if (url.indexOf('?') > -1) url += "&";
+                        else url += "?";
+                        url += "MenuNo=" + jitem.attr("menuno");
+                        jitem.attr("url", url);
+                    }
+                    f_addTab(tabid, $("span:first", jitem).html(), url);
+                }).live('mouseover', function ()
+                {
+                    var jitem = $(this);
+                    jitem.addClass("over");
+                }).live('mouseout', function ()
+                {
+                    var jitem = $(this);
+                    jitem.removeClass("over");
+                });
+
+                var ran = Math.random();
+                $("#maintree").ligerTree({checkbox:false,nodeWidth:130,textFieldName:'text',
+                    data: [
+                          
+                  			{ text: '亦庄机房hadoop2.0集群',id:'bjcer',url:'', icon: '/site_media/images/server.png', 
+                  					children: [
+									{ text: '概况统计',id:'bjcergeneral',url:'/audit/hadoop/summary', icon: '/site_media/images/view_detail.gif' },
+									{ text: '集群指标统计', id:'bjcercluster',url:'/audit/hadoop/performance',icon: '/site_media/images/domain_template.png' },
+	                  			     { text: '时长统计',id:'bjcertime',url:'/audit/hadoop/job_time_status/', icon: '/site_media/images/chronometer.png' },
+	                  			     { text: '作业统计',id:'bjcerjob',url:'/audit/hadoop/job_status/', icon: '/site_media/images/taskbar.png' },
+	                  			     { text: '用户统计', id:'bjceruser',url:'/audit/hadoop/user_status/',icon: '/site_media/images/memeber.gif' },
+	                  			   { text: '用户管理', id:'bjceruserManager',url:'/audit/hadoop/user_list',icon: '/site_media/images/register.gif' },
+	                  			  { text: '周报列表', id:'bjcerreport',url:'/audit/hadoop/report_list',icon: '/site_media/images/register.gif' },
+	                  			    { text: '部门管理信息', id:'bjcerdepartment', url:'/audit/hadoop/department_list', icon: '/site_media/images/department.gif' },
+	         	       			    { text: '资源消耗排名', id:'bjcerdepartmentRank', url:'/audit/hadoop/spend_list', icon: '/site_media/images/department.gif' }
+                  			               ]
+                  			 }
+                  			
+                  				,
+                  				
+                  		
+                  			
+                  			{ text: '亦庄机房hadoop1.0集群',id:'bjyz',url:'', icon: '/site_media/images/server.png', 
+                  					children: [
+									{ text: '概况统计',id:'bjyzgeneral',url:'/audit/hadoop/summary1', icon: '/site_media/images/view_detail.gif' },
+									{ text: '集群指标统计', id:'bjyzcluster',url:'/audit/hadoop/performance1',icon: '/site_media/images/domain_template.png' },
+	                  			     { text: '时长统计',id:'bjyztime',url:'/audit/hadoop/job_time_status1/', icon: '/site_media/images/chronometer.png' },
+	                  			     { text: '作业统计',id:'bjyzjob',url:'/audit/hadoop/job_status1/', icon: '/site_media/images/taskbar.png' },
+	                  			     { text: '用户统计', id:'bjyzuser',url:'/audit/hadoop/user_status1/',icon: '/site_media/images/memeber.gif' },
+	                  			   { text: '用户管理', id:'bjyzuserManager',url:'/audit/hadoop/user_list1',icon: '/site_media/images/register.gif' },
+	                  			  { text: '周报列表', id:'bjyzreport',url:'/audit/hadoop/report_list1',icon: '/site_media/images/register.gif' },
+	                  			    { text: '部门管理信息', id:'bjyzdepartment', url:'/audit/hadoop/department_list1', icon: '/site_media/images/department.gif' },
+	         	       			    { text: '资源消耗排名', id:'bjyzdepartmentRank', url:'/audit/hadoop/spend_list1', icon: '/site_media/images/department.gif' }
+                  			               ]
+                  			 }
+						,
+					{ text: '赛尔机房hadoop1.0集群',id:'bjyz',url:'', icon: '/site_media/images/server.png', 
+                                                        children: [
+                                                                        { text: '概况统计',id:'bjyzgeneral',url:'/ss?clusterID=bjyz&type=chart', icon: '/site_media/images/view_detail.gif' },
+                                                                        { text: '集群指标统计', id:'bjyzcluster',url:'/dis?page=jobperformance_statistic.jsp&clusterID=bjyz',icon: '/site_media/images/domain_template.png' },
+                                                     { text: '时长统计',id:'bjyztime',url:'/audit/hadoop/job_time_status1/', icon: '/site_media/images/chronometer.png' },
+                                                     { text: '作业统计',id:'bjyzjob',url:'/audit/hadoop/job_status1/', icon: '/site_media/images/taskbar.png' },
+                                                     { text: '用户统计', id:'bjyzuser',url:'/audit/hadoop/user_status1/',icon: '/site_media/images/memeber.gif' },
+                                                   { text: '用户管理', id:'bjyzuserManager',url:'/audit/hadoop/user_list1',icon: '/site_media/images/register.gif' },
+                                                  { text: '周报列表', id:'bjyzreport',url:'/audit/hadoop/report_list1',icon: '/site_media/images/register.gif' },
+                                                    { text: '部门管理信息', id:'bjyzdepartment', url:'/audit/hadoop/department_list1', icon: '/site_media/images/department.gif' },
+                                                    { text: '资源消耗排名', id:'bjyzdepartmentRank', url:'/audit/hadoop/spend_list1', icon: '/site_media/images/department.gif' }
+                                                       ]
+                                         }
+                  			
+                  		
+                  			
+                         
+        	         					
+                ],onSelect:selectNode
+                });
+            });
+            
+            function selectNode(node){
+            	if(node.data==null || node.data===undefined )return false;
+                if(node.data.url!=""){
+                	f_addTab(node.data.id,node.data.text,node.data.url);
+                }
+            }
+            
+            function f_heightChanged(options)
+            {
+                if (tab)
+                    tab.addHeight(options.diff);
+                if (accordion && options.middleHeight - 24 > 0)
+                    accordion.setHeight(options.middleHeight - 24);
+            }
+            function f_addTab(tabid,text, url)
+            { 
+                var flag=false;
+          	  var links = $("li", tab.tab.links);
+          	  for(var i=0;i<links.length;i++){
+              	 if(tabid==$(links[i]).attr("tabid")){
+              		 flag=true;
+              		 break;
+              	 }
+          	  }
+          	if(flag){
+        		  new_tabid=tabid;
+            	  new_text=text;
+            	  new_url=url;
+            	   $.ligerDialog.confirm("页面 '"+text+"' 已经打开,是否要替换当前打开的页面?", function (yes){
+                              if(yes)tab.reload(tabid);
+                          	tab.selectTabItem(tabid);
+                         });
+        	  }else{
+          		  tab.addTabItem({ tabid : tabid,text: text, url: url });
+          	  }
+            } 
+
+            function f_closeIt(tabid){
+         	   tab.removeTabItem(tabid);
+            }
+           
+            function closeWindow(){
+                $.ligerDialog.confirm("您确认退出吗?", function(yes){
+            		if(yes){
+            			document.muf.submit();
+            		}});
+        	 
+            }
+            
+     </script>
+<style>
+.l-dialog-tc {
+	background: url('/site_media/images/dialog-tr.gif') repeat-x
+}
+</style>
+</head>
+<body>
+	<div id="pageloading"></div>
+	<div id="topmenu" class="l-topmenu">
+		<div class="l-topmenu-logo"></div>
+		<div class="l-topmenu-welcome">
+			<a href="#" onClick="closeWindow()"></a>
+		</div>
+	</div>
+	<div id="layout1" style="width: 100%; margin: 0 auto; margin-top: 2px;">
+		<div position="left" title="主要菜单" id="accordion1"
+			style="height: 600px; overflow-y: auto; background: #f8f9fc">
+			<ul id="maintree"
+				style="width: 106px; margin-top: 12px; background: #f8f9fc; height: 95%">
+			</ul>
+		</div>
+		<div position="center" id="framecenter">
+			<div tabid="home" title="我的主页" style="height: 300px">
+				<iframe frameborder="0" name="home" id="home"
+					src="/audit/hadoop/welcome"></iframe>
+			</div>
+		</div>
+		<div position="bottom">
+			<div class="foot">版权所有：北京千橡网景科技发展有限公司：文网文[2009]169号
+				京ICP证090254号 建议使用1024*768及以上分辨率</div>
+		</div>
+	</div>
+	<form name="muf" method="post" action="/dis?page=dap" id="aa"></form>
+</body>
+</html>
+

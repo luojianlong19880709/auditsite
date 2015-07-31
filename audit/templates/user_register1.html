@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	
+	<link href="/site_media/js/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+        <link href="/site_media/js/ligerUI/skins/blue/css/all.css" rel="stylesheet" type="text/css" />
+        <link href="/site_media/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
+        <link href="/site_media/css/cycas.css" rel="stylesheet" type="text/css" />
+        <link href="/site_media/css/common.css" rel="stylesheet" type="text/css" />
+
+        <script src="/site_media/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/core/base.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerui.min.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerGrid.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerToolBar.js" type="text/javascript"></script>
+        <script src="/site_media/js/ligerUI/js/plugins/ligerComboBox.js" type="text/javascript"></script>
+
+
+        <script src="/site_media/js/highcharts.js" type="text/javascript"></script>
+        <script src="/site_media/js/highstock.src.js" type="text/javascript"></script>
+        <script src="/site_media/js/exporting.js" type="text/javascript"></script>
+        <script src="/site_media/js/json2.js" type="text/javascript"></script>
+        <script src="/site_media/js/LG.js" type="text/javascript"></script>
+        <script src="/site_media/js/onload.js" type="text/javascript"></script>
+	<script src="/site_media/js/user_manager/user_register.js" type="text/javascript"></script>
+</head>
+<body > 
+   <div class="infoContent">
+ <form class="l-form" id="cycasForm" name="cycasForm" action="" method="get" onsubmit="return isEmpty();" >
+
+       <div class="l-group l-group-hasicon"><img  src="/site_media/images/register.gif" complete="complete"/><span>用户信息</span></div>
+       <div class="col6"  >
+          <dl>
+      <dt>用户名称：</dt>
+      <dd><span style="float:left"><input name="user_name"  id="user_name" type="text" maxlength="50" class="validate[required,maxSize[50],custom[letterNum]] "  /></span>
+       <img src="/site_media/images/bullet_star.png" complete="complete"/>
+      </dd>
+    </dl>
+              <dl>
+      <dt>用户申请人：</dt>
+      <dd><span style="float:left"><input name="applicant"   id="applicant" type="text" maxlength="50"  class="validate[required,maxSize[50],custom[letterNum]] "  /></span>
+       <img src="/site_media/images/bullet_star.png" complete="complete"/>
+      </dd>
+    </dl>
+    
+    <dl>
+      <dt>所在部门：</dt>
+      <dd>
+      	<span style="float:left">
+      		<input name="department" id="department" type="text" class="validate[required] "   />
+      	</span>
+   		<img src="/site_media/images/bullet_star.png" complete="complete"/>
+      </dd>
+    </dl>
+    
+   <dl>
+      <dt>直接领导：</dt>
+      <dd><span style="float:left"><input name="leader" id="leader"  maxlength="50" type="text" class="validate[maxSize[50],custom[letterNum]] "    /></span>
+      </dd>
+    </dl>
+    
+    <dl>
+      <dt>手机号：</dt>
+      <dd><span style="float:left"><input name="mobile_phone" id="mobile_phone" maxlength="15" type="text" class="validate[maxSize[15],custom[mobile]] "   /></span>
+      </dd>
+    </dl>
+    
+        
+      <dl>
+      <dt>分机号：</dt>
+      <dd><span style="float:left"><input name="tel_number" id="tel_number" maxlength="5" type="text"  class="validate[maxSize[5],custom[extphonenum]] "   /></span>
+      </dd>
+    </dl>
+    
+       <dl>
+      <dt>电子邮箱：</dt>
+      <dd><span style="float:left"><input name="email"  id="email" maxlength="50" type="text"  class="validate[maxSize[50],custom[email]] "   /></span>
+      </dd>
+    </dl>
+    
+      <dl>
+      <dt>预计存储量：</dt>
+      <dd><span style="float:left"><input name="storage" id="storage" maxlength="50" type="text" class="validate[maxSize[50],custom[floatnum]] "   /></span>
+      GB
+      </dd>
+    </dl>
+    
+          <dl >
+      <dt style="width:110px">预计每月存储增量：</dt>
+      <dd><span style="float:left"><input name="storage_per_month" id="storage_per_month" maxlength="50" type="text" class="validate[maxSize[50],custom[floatnum]] "  /></span>
+      GB
+      </dd>
+    </dl>
+      <dl>
+      <dt>申请客户机IP：</dt>
+      <dd><span style="float:left"><input name="hadoop_client_ip" id="hadoop_client_ip" maxlength="200" type="text" class="validate[maxSize[50],custom[floatnum]] "   /></span>
+      </dd>
+    </dl>
+    
+<!--     <dl >
+      <dt>申请日期：</dt>
+      <dd><span style="float:left"><input name="apply_date" class="Wdate"  id="apply_date" maxlength="20" type="text"  /></span>
+      </dd>
+    </dl>
+-->
+    
+            <dl class="width02">
+      <dt style="width:100px">访问业务范围：</dt>
+      <dd><span style="float:left">
+      <textarea rows="3"  name="access_business_range" id="access_business_range"  maxlength="300"  class="validate[maxSize[300]]"  cols="60"></textarea>
+       </span>
+      </dd>
+    </dl>
+    
+                <dl  class="width03">
+      <dt>应用说明：</dt>
+      <dd><span style="float:left">
+       <textarea rows="3"   name="description" id="description" maxlength="300" class="validate[maxSize[300]]"   cols="60"></textarea>
+      </span>
+      </dd>
+    </dl>
+    
+       </div>
+	<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="提交" name="search" style="margin-right:10px; margin-top:20px; background:#9393FF" /></div>
+ </form>
+ </div>
+
+
+</body>
+</html>

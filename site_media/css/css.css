@@ -1,0 +1,113 @@
+﻿@charset "utf-8";
+
+/*
+ * @ 名称: jobs页面样式
+ * @ 功能: jobs页面样式
+*/
+
+/* base */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { margin:0; padding:0;}
+/* common */
+body{ font-family:Tahoma, Verdana, STHeiTi, simsun, sans-serif; font-size:13px; background-color:#FFFFFF; font-style:normal; color:#333333;}
+ul, li, ol{ list-style:none;}
+img{ border:none;}
+a:link, a:visited{ text-decoration:none; color:#369}
+a:hover{ text-decoration:underline;}
+.clearfix:after{ content: "\20"; display: block; clear: both}
+.fl{ float:left;}
+.fr{ float:right;}
+.vm{ vertical-align:middle;}
+/* content */
+.headerbox{ height:43px; background:url("../img/page-headerbg.png") repeat-x top left transparent; margin-bottom: 30px;}
+.header{ width:980px; margin:0 auto; position:relative;}
+.logobox{ position:absolute; height:42px; top:3px; left:0;}
+.page-title{ margin-left: 220px; color: white; font-weight: normal; font-size: 16px; line-height: 49px;}
+.user-box{ position: absolute; right: 0; top: 16px; font-size: 14px;}
+.username{ color:#FFF; margin-right: 10px;}
+.user-box .exitpage{ color:#FFF;}
+/*page-content*/
+.page-content{ width:960px; margin:0 auto 40px; background-color:#F0F5F8; padding:10px; height:1%\9;}
+.c-left{ width:150px; border-right: 1px solid #CEE1EE;}
+.m-title{ font-weight:bold; background:url("../img/m-openbg.png") no-repeat left center transparent; padding-left:20px; line-height: 28px; cursor: pointer;}
+.menubox .m-ctitle{ background-image:url("../img/m-closebg.png");}
+.menubox a:link, .menubox a:visited{ display:block; color:#333; height:22px; line-height:22px; margin-left:20px;}
+/* .menubox a:hover{ text-decoration:none;} */
+.menubox .c-selected{ background:url('../img/m-selected.png') no-repeat 110px center #CEE1EE;}
+/* right */
+.c-right{ background-color:#FFF; border:1px solid #CEE1EE; padding: 30px 20px; width: 768px; margin-left:-1px;}
+.tblsitebox{ padding-bottom:30px; border-bottom:1px solid #CCC;}
+.tblsitename{ font-size: 17px; margin-bottom: 20px;}
+.tblsite{ border-left:1px solid #CCC; border-top:1px solid #CCC; font-size:14px;}
+.tblsite-head th{ font-weight:normal; background-color:#F7F7F7; border-right:1px solid #CCC; border-bottom:1px solid #CCC; text-align:right; padding:10px;}
+.tblsite-bd td{ padding:10px; border-right:1px solid #CCC; border-bottom:1px solid #CCC; }
+.cl-blbox{ text-align:center; margin-top:-1px; margin-bottom: 30px;}
+.cl-below{ display:inline-block; width:100px; height:20px; background:url("../img/con-closebg.png") no-repeat 0 0 transparent;}
+.cl-blbox .op-below{ background:url("../img/con-openbg.png") no-repeat 0 0 transparent;}
+/* tab */
+.tablistbox{ width:100%; height:30px; position:relative; background-color:#F0F5F8; margin-bottom: 20px;}
+.tablist{ position:absolute; line-height: 25px; right: 30px; top: 5px;}
+.tablist li{ float:left; padding: 0 15px;}
+.tablist li.curtab{ background-color:#FFF;}
+.tablist li a{ font-size:14px; font-weight:bold;}
+.tablist li a:hover{ text-decoration:none;}
+/* corm */
+.blueline, .greenline{ width:45px; height:2px; background-color:#005EAC; display:inline-block; overflow:hidden; *margin-right:5px;}
+.greenline{ background-color:#72B054;}
+.select-dt{ margin-top: 3px; float: right;}
+.select-dt input{ margin-left:15px;}
+.ana-dt{ height:1%\9;}
+select{ height:22px; border: 1px solid #7F9DB9; width:100px; line-height: 1.1;}
+#select-norm{ width:100px;}
+.lblnorm{ font-size:14px; font-weight:bold; margin-right: 5px; *float:left; *margin-top:3px; }
+.lbltype{ font-size:14px; font-weight:bold; margin-right:}
+.norm-graph{ width:768px; height:270px; margin-top:10px;}
+.ana-source{ width:376px;}
+.mr16{ margin-right:16px;}
+.sc-title{ margin:30px 0 20px; height:1%\9}
+.sc-title h4{ font-size: 16px;}
+.sc-title a{ margin-top:3px;}
+.visit-attr{ margin-top:20px;}
+.attr-title{ border-bottom:1px solid #CCC; padding-bottom:10px; font-size: 16px;}
+.attrlist{ padding-bottom:15px; border-bottom:1px solid #CCC; margin-bottom:10px; height:1%\9;}
+.attr-name{ font-size: 14px; margin: 10px 0;}
+.visit-attr .clearmargin{ margin-bpttpm:0; padding-bottom:0; border-bottom:none;}
+/* footer */
+.site-footer{height: 150px; margin: 0 auto; overflow: hidden; padding-top: 10px; position: relative; width: 980px;}
+.site-footer .main { overflow: hidden;}
+.site-footer ul.link { float: right; margin-right: -12px;}
+.site-footer ul.link li:after { color: #AAAAAA; content: " |";}
+.site-footer ul.link li { display: inline-block; margin-right: 1ex; display: inline-block;
+    margin-right: 1ex; *display: inline; *zoom: 1; *padding-right: 5px; *background: url("../img/pipe.png") no-repeat right center}
+.site-footer .copyright { color: #808080; float: left; width: auto !important;}
+.site-footer .haoes { background: none repeat scroll 0 0 #F7F7F7; clear: both; color: #888888; font-family: tahoma,mingliu; font-size: 11px; margin-top: 15px; padding: 8px;}
+.site-footer .dot { font-weight: bold; margin: 0 8px;}
+.haoes a:link, .haoes a:visited{ color:#888888;}
+
+/*****/
+/* user-loyalty */
+.mb40{ margin-bottom:40px;}
+.md10{ margin-bottom:10px;}
+.mt20{ margin-top:20px;}
+.mr10{ margin-right:10px;}
+.mr5{ margin-right:5px}
+.ml20{ margin-left:20px;}
+.time-comp, .lbl-comp{ vertical-align:middle;}
+.anas-type{ font-size:16px; font-weight:bold; line-height: 29px; margin-left: 10px;}
+.tablistbox .tablist{ right:140px; }
+.check-comp{position:absolute; right:10px; top:6px;}
+.tbldt-bd td{ padding:10px; border-right:1px solid #CCC; border-bottom:1px solid #CCC; text-align:right;}
+.result-graph{ text-align:center;}
+/* .anas-result{ margin:20px 0;} */
+.res-title{ border-bottom:1px solid #CCC; padding-bottom:10px; margin-bottom:20px;}
+.tblresult{ border-left:1px solid #CCC; border-top:1px solid #CCC; text-align:right; margin-top: 20px;}
+.rest-head th, .rest-bd td{ font-weight:normal; border-right:1px solid #CCC; border-bottom:1px solid #CCC; padding:8px 10px;}
+
+.tblsite thead.textcen th{  text-align:center;}
+.visit-result{ padding:10px 0; border-bottom:1px solid #CCC;}
+.setlink{ width: 980px; margin: -20px auto 10px; font-size: 14px; color: #369;}
+/* source-sign */
+.signbox{ border:1px solid #CCC; margin-bottom:20px; height:1%\9;}
+.signana{ width:460px; text-align:center;}
+.tblsign{ width:306px; margin-top: -1px;}
+.tblsign-bd td{ border-left:1px solid #CCC; border-top:1px solid #CCC; font-weight:bold; padding:5px;}
+

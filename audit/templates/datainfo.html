@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>冷数据分析平台</title>
+</head>
+<body>
+
+
+  <form method="post">
+  {{form.as_p}}
+  <td>时间格式：年-月-日</td>
+  <br>
+  <br>
+  <input type="submit" name="datasearch" value="按日期排序" />
+  <input type="submit" name="filesize" value="按目录大小排序">
+  </form>
+  <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse">
+  <tr>
+  <td style="vertical-align:middle; text-align:center" width="50">用户</td>
+  <td style="vertical-align:middle; text-align:right" width="100">目录大小</td>
+  <td style="vertical-align:middle; text-align:center" width="800">路径</td>
+  <td style="vertical-align:middle; text-align:center" width="220">最后访问时间</td>
+  </tr>
+  </table>
+  {% for i in datas %}
+  <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse">
+  <tr>
+  <td style="vertical-align:middle; text-align:center" width="50">{{ i.owner }}</td>
+  <td style="vertical-align:middle; text-align:right" width="100">{{i.size}}</script></td>
+  <td style="vertical-align:middle; text-align:center" width="800">{{ i.path }}</td>
+  <td style="vertical-align:middle; text-align:center" width="220">{{ i.m_year | date:"Y-m-d" }}</td>
+  </tr>
+  </table>
+  {% endfor %}
+  </tr>
+{{user_tuple}}
+</body>
+</html>

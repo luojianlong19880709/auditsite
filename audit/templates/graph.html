@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title></title>
+</head>
+<body>
+<a href="http://10.4.19.71:8080/audit/search/">冷数据搜索</a>
+<br>
+<br>
+
+  <form method="post">
+  {{form.as_p}}
+  <td>时间格式：年-月-日</td>
+  <br>
+  <br>
+  <input type="submit" value="搜索" />
+  </form>
+
+<script type="text/javascript" src="/site_media/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/site_media/highcharts.js"></script>
+<script type="text/javascript" src="/site_media/exporting.js"></script>
+<script>
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column',
+            margin: [ 50, 50, 100, 80]
+        },
+        title: {
+            text: ' 查询对比情况'
+        },
+        xAxis: {
+            categories: {{categories | safe}},
+            labels: {
+                rotation: 0,
+                align: 'right',
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '占用空间'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '占用空间: <b>{point.y:.1f}</b>',
+        },
+	
+	plotOptions: {
+            series: {
+                cursor: 'pointer',
+                events: {
+                    click: function(event) {
+		     var a = e.point.category
+                     var b = '111'
+                     var c = '222'
+		    if (confirm("你确定提交吗？")) {  
+                                alert("点击了确定");  
+                                location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + b;
+                        }                 
+                        else {  
+                                alert("点击了取消");  
+                                location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + c;
+                     }
+                    }
+                }
+            }
+        },
+
+        series: [{
+            name: '今天的日志',
+            data: {{data}},
+	    events: {
+                        click: function (e) {
+			var a = e.point.category
+                        var b = '111'
+			var c = '222'
+                        if (confirm("你确定提交吗？")) {  
+                                alert("点击了确定");  
+                                location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + b;
+                        }                 
+                        else {  
+                                alert("点击了取消");  
+                                location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + c;
+                        }
+                   }
+              },
+            dataLabels: {
+                enabled: false,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                x: 4,
+                y: 10,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: '0 0 3px black'
+                }
+            }
+        },
+	{
+            name: '今天的日志',
+            data: {{data_date}},
+	    events: {
+                        click: function (e) {
+			var a = e.point.category
+			var b = 'sortbysize'
+			var c = 'sortbydate'
+			if (confirm("是否按目录大小排序?")) {
+
+				alert("显示按目录大小排序");
+
+				location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + b;
+        		}		  
+        		else {  
+				
+				alert("按日期排序");
+				location.href="http://10.4.19.71:8080/audit/graph_search/" + a + "/" + "{{searchdate}}" + "/" + c;
+        		}		  
+                   }
+              },
+            dataLabels: {
+                enabled: false,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                x: 4,
+                y: 10,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif',
+                    textShadow: '0 0 3px black'
+                }
+            }
+        },
+]
+    });
+});
+</script>
+
+
+<div id="container" style="min-width:700px;height:400px"></div>
+
+
+</body>
+</html>
